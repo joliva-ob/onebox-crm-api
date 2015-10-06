@@ -14,6 +14,10 @@ List all the key data from the clients which have performed at least one purchas
 
 ### List All Buyers [GET]
 
++ Headers
+
+        Authorization: Bearer OAUTH2_TOKEN
+
 + Parameters
     + id (optional, text) ... Filter by a given buyer identified by its email
     + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
@@ -45,12 +49,16 @@ List all the key data from the clients which have performed at least one purchas
         ]
 
 ## Purchases Collection [/crm-api/v1.0/purchases{?id,start_date,end_date,page}]
-List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
+List all the key data from the purchases including its products, the order details they came from, the orderline and its channel on sale. Finally it is also allowed filtering between dates and paging.
 
 ### List All Purchases [GET]
 
++ Headers
+
+        Authorization: Bearer OAUTH2_TOKEN
+
 + Parameters
-    + id (optional, text) ... Filter by a given buyer identified by its email
+    + id (optional, text) ... Filter by a given purchase identified by its Onebox order code
     + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
     + end_date (optional, date) ... Filter by final date
     + page (optional, number) ... Paginate response to the given page number
@@ -79,4 +87,48 @@ List all the key data from the clients which have performed at least one purchas
             }
         ]
 
+## Orders Collection [/crm-api/v1.0/orders{?id,start_date,end_date,page,status}]
+List all the key data from the orders. At this moment, it is only allowed status = ABANDONED. So finally you can either filter by between dates and paging.
+
+### List All Orders [GET]
+
++ Headers
+
+        Authorization: Bearer OAUTH2_TOKEN
+
++ Parameters
+    + id (optional, text) ... Filter by a given buyer identified by its email
+    + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
+    + end_date (optional, date) ... Filter by final date
+    + page (optional, number) ... Paginate response to the given page number
+    + status (enum[string])
+
+        Filter by order status, the allowed possibilities are:
+
+        + Members
+            + `ABANDONED` - Indicates that the shopping cart and its linked order has not been confirmed yet.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
 
