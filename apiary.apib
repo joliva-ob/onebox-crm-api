@@ -1,22 +1,27 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://onebox-crm-api.getsandbox.com/
 
 # onebox-crm-api
 
 API to share CRM data to our integrated clients.
 
-To do so, we have used a API Blueprint standard and apiary.io as a main editing and mocking tool:
+To do so, we have used a **API Blueprint** standard, **apiary** as an online editing and mocking tool, **aglio** to document it and **getsandbox** as a sandbox provider:
 + [API Blueprint](https://apiblueprint.org/)
 + [apiary.io](https://app.apiary.io/oneboxcrmapi)
++ [getsandbox.com](http://onebox-crm-api.getsandbox.com/)
++ [aglio](https://github.com/danielgtaylor/aglio)
 
 ## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page}]
 List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
 ### List All Buyers [GET]
 
-+ Headers
++ Request
 
-        Authorization: Bearer OAUTH2_TOKEN
+  + Headers
+
+      Authorization: Bearer OAUTH2_TOKEN
+      Accept: application/json
 
 + Parameters
     + id (optional, text) ... Filter by a given buyer identified by its email
@@ -26,36 +31,103 @@ List all the key data from the clients which have performed at least one purchas
 
 + Response 200 (application/json)
 
-        [
+        {
+          "collection":
+          {
+            "version": "1.0",
+            "href": "http://www.oneboxtm.com/api-crm/v1.0/",
+            "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
+            "request_date": "2015-08-05T08:40:51.620Z",
+            "channel_id": "int_channel@oneboxtm.com",
+            "parameters":
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+              "id": "",
+              "start_date": "",
+              "end_date": "",
+              "page": 2
+            },
+
+            "buyers": [
+              {
+                "id": "joan@email.com",
+                "email": "joan@gmail.com",
+                "name": "first name",
+                "surname": "last name",
+                "birth_date": "1980-05-02",
+                "gender": "male",
+                "address1": "first line address",
+                "address2": "second line address",
+                "city": "Pineda de Mar",
+                "state": "Barcelona",
+                "zip_code": "08397",
+                "country": "Spain",
+                "language": "SPA",
+                "signup_date": "2015-08-05T08:40:51.620Z",
+                "phone": "+34 555 555 555",
+                "mobile": "+34 555 555 555",
+                "newsletter_agreement": "true",
+                "sms_agreement": "false",
+                "phone_agreement": "false",
+                "post_agreement": "true",
+                "update_date": "2015-08-05T08:40:51.620Z"
+              },
+
+              {
+                "id": "eva@email.com",
+                "email": "eva@gmail.com",
+                "name": "first name",
+                "surname": "last name",
+                "birth_date": "1984-12-11",
+                "gender": "female",
+                "address1": "first line address",
+                "address2": "second line address",
+                "city": "Pineda de Mar",
+                "state": "Barcelona",
+                "zip_code": "08397",
+                "country": "Spain",
+                "language": "SPA",
+                "signup_date": "2015-08-05T08:40:51.620Z",
+                "phone": "+34 555 555 555",
+                "mobile": "+34 555 555 555",
+                "newsletter_agreement": "true",
+                "sms_agreement": "false",
+                "phone_agreement": "false",
+                "post_agreement": "true",
+                "update_date": "2015-08-05T08:40:51.620Z"
+              }
+            ],
+
+            "links": [
+              {
+                "name": "next_page",
+                "prompt": "Next",
+                "rel": "next",
+                "href": "buyers/page/3",
+                "render": "link"
+              },
+              {
+                "name": "previous_page",
+                "prompt": "Bext",
+                "rel": "back",
+                "href": "buyers/page/1",
+                "render": "link"
+              }
+            ]
+
+          }
+        }
 
 ## Purchases Collection [/crm-api/v1.0/purchases{?id,start_date,end_date,page}]
 List all the key data from the purchases including its products, the order details they came from, the orderline and its channel on sale. Finally it is also allowed filtering between dates and paging.
 
 ### List All Purchases [GET]
 
-+ Headers
++ Request
 
-        Authorization: Bearer OAUTH2_TOKEN
+  + Headers
+  
+      Authorization: Bearer OAUTH2_TOKEN
+      Accept: application/json
 
 + Parameters
     + id (optional, text) ... Filter by a given purchase identified by its Onebox order code
@@ -92,16 +164,19 @@ List all the key data from the orders. At this moment, it is only allowed status
 
 ### List All Orders [GET]
 
-+ Headers
++ Request
 
-        Authorization: Bearer OAUTH2_TOKEN
+  + Headers
+
+      Authorization: Bearer OAUTH2_TOKEN
+      Accept: application/json
 
 + Parameters
     + id (optional, text) ... Filter by a given buyer identified by its email
     + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
     + end_date (optional, date) ... Filter by final date
     + page (optional, number) ... Paginate response to the given page number
-    + status (enum[string])
+    + status (required, enum[string])
 
         Filter by order status, the allowed possibilities are:
 
@@ -131,4 +206,3 @@ List all the key data from the orders. At this moment, it is only allowed status
                 ]
             }
         ]
-
