@@ -9,10 +9,16 @@ To do so, we have used a API Blueprint standard and apiary.io as a main editing 
 + [API Blueprint](https://apiblueprint.org/)
 + [apiary.io](https://app.apiary.io/oneboxcrmapi)
 
-## Buyers Collection [/buyers]
-List all the key data from the clients which have performed at least one purchase.
+## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page}]
+List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
-### List All Questions [GET]
+### List All Buyers [GET]
+
++ Parameters
+    + id (optional, text) ... Filter by a given buyer identified by its email
+    + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
+    + end_date (optional, date) ... Filter by final date
+    + page (optional, number) ... Paginate response to the given page number
 
 + Response 200 (application/json)
 
@@ -38,48 +44,39 @@ List all the key data from the clients which have performed at least one purchas
             }
         ]
 
-### Create a New Question [POST]
+## Purchases Collection [/crm-api/v1.0/purchases{?id,start_date,end_date,page}]
+List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### List All Purchases [GET]
 
-+ Request (application/json)
++ Parameters
+    + id (optional, text) ... Filter by a given buyer identified by its email
+    + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51.620Z`)
+    + end_date (optional, date) ... Filter by final date
+    + page (optional, number) ... Paginate response to the given page number
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
++ Response 200 (application/json)
 
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
+        [
             {
                 "question": "Favourite programming language?",
                 "published_at": "2015-08-05T08:40:51.620Z",
                 "choices": [
                     {
                         "choice": "Swift",
-                        "votes": 0
+                        "votes": 2048
                     }, {
                         "choice": "Python",
-                        "votes": 0
+                        "votes": 1024
                     }, {
                         "choice": "Objective-C",
-                        "votes": 0
+                        "votes": 512
                     }, {
                         "choice": "Ruby",
-                        "votes": 0
+                        "votes": 256
                     }
                 ]
             }
+        ]
+
+
