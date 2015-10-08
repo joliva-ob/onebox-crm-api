@@ -4,7 +4,7 @@
 
 To do so, we have used a **API Blueprint** standard, **apiary** as an online editing and mocking tool, **aglio** to document it and **getsandbox** as a sandbox provider:
 + [API Blueprint](https://apiblueprint.org/)
-+ [apiary.io](https://app.apiary.io/oneboxcrmapi)
++ [apiary.io](http://docs.oneboxcrmapi.apiary.io/)
 + [getsandbox.com](http://onebox-crm-api.getsandbox.com/)
 + [aglio](https://github.com/danielgtaylor/aglio)
 
