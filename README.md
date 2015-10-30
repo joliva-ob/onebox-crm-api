@@ -8,7 +8,7 @@ To do so, we have used a **API Blueprint** standard, **apiary** as an online edi
 + [getsandbox.com](http://onebox-crm-api.getsandbox.com/)
 + [aglio](https://github.com/danielgtaylor/aglio)
 + [github](https://github.com/joliva-ob/onebox-crm-api)
-+ [onebox-developer](http://developer.oneboxtickets.com/crm-api/index.html)
++ [onebox-developer](http://developer.oneboxtickets.com/crm-api/)
 
 ### Usage
 1 edit the api blueprint document with apiary.io, or edit directly with Atom + blueprint plugin preview, language and lintr validation. This will provide a .md or .apib file.
