@@ -13,6 +13,32 @@ To do so, we have used a **API Blueprint** standard, **apiary** as an online edi
 + [github](https://github.com/joliva-ob/onebox-crm-api)
 + [onebox-developer](http://developer.oneboxtickets.com/crm-api/)
 
+## OAuth Requests [/oauth/token]
+
+### Request Access Token [POST]
+
+You will need to use OAuth to access the API.  Write to us at api-support@oneboxtm.com.  We will give you a client ID and client secret. Use this as shown in the following call in order to retrieve a token.
+Once you have a token you can use it in all API calls as shown below.
+
++ Request (application/json)
+
+        {
+            "grant_type": "password",
+            "client_id": [CLIENT_ID],
+            "client_secret": [CLIENT_SECRET],
+            "password": [YOURPASSWORD],
+            "username": [YOURUSERNAME]
+        }
+
++ Response 201
+
+        {
+            "access_token": "[OAUTH2_TOKEN]",
+            "token_type":"bearer",
+            "expires_in":7200,
+            "refresh_token": "[REFRESH_TOKEN]"
+        }
+
 ## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page}]
 List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
@@ -31,8 +57,8 @@ See below the description of the response fields we consider that need to be exp
 
   + Headers
 
-      Authorization: Bearer OAUTH2_TOKEN
-      Accept: application/json
+            Authorization: Bearer OAUTH2_TOKEN
+            Accept: application/json
 
 + Parameters
     + id (optional, text) ... Filter by a given buyer identified by its email
@@ -163,8 +189,8 @@ List all the key data from the purchases including its products, the order detai
 
   + Headers
 
-      Authorization: Bearer OAUTH2_TOKEN
-      Accept: application/json
+            Authorization: Bearer OAUTH2_TOKEN
+            Accept: application/json
 
 + Parameters
     + id (optional, text) ... Filter by a given purchase identified by its Onebox order code
@@ -183,117 +209,117 @@ List all the key data from the purchases including its products, the order detai
 
 + Response 200 (application/json)
 
-    {
-        "collection":
         {
-          "version": "1.0",
-          "href": "http://www.oneboxtm.com/api-crm/v1.0/",
-          "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
-          "request_date": "2015-08-05T08:40:51.620Z",
-          "channel_id": "int_channel@oneboxtm.com",
-          "parameters":
+          "collection":
           {
-            "id": "",
-            "start_date": "",
-            "end_date": "",
-            "page": 1
-          },
-
-          "purchases": [
-          {
-              "order":
-              {
-                "id": "XCGDEDFEdZ5",
-                "buyer_id": "joan@gmail.com",
-                "amount": 535.43,
-                "products_number": 3,
-                "status": "OK",
-                "delivery_method": "EMAIL",
-                "order_date": "2015-08-05T08:40:51.620Z",
-                "discount_amount": 23.00,
-                "update_date": "2015-08-05T08:40:51.620Z"
-              },
-              "channel":
-              {
-                "channel_id": "int_channel@oneboxtm.com",
-                "city": "BARCELONA",
-                "state": "CATALONIA",
-                "region": "",
-                "country": "SPAIN",
-                "zipCode": "08003"
-              },
-              "products": [
-                {
-                  "id": "439832",
-                  "sku": "LATERAL 1",
-                  "description": "Tribuna lateral 1a",
-                  "taxonomy": "43123",
-                  "taxonomy_description": "DEPFUT",
-                  "event_id": "4324",
-                  "event_description": "Campeonato de liga 15-16",
-                  "session_id": "5438943",
-                  "amount": 125.45,
-                  "discount_amount": 00.00
-                },
-                {
-                  "id": "439831",
-                  "sku": "LATERAL 1",
-                  "description": "Tribuna lateral 1a",
-                  "taxonomy": "43123",
-                  "taxonomy_description": "DEPFUT",
-                  "event_id": "4324",
-                  "event_description": "Campeonato de liga 15-16",
-                  "session_id": "5438943",
-                  "amount": 225.45,
-                  "discount_amount": 23.00
-                },
-                {
-                  "id": "439833",
-                  "sku": "GOL NORD",
-                  "description": "Tribuna de gol nord.",
-                  "taxonomy": "43123",
-                  "taxonomy_description": "DEPFUT",
-                  "event_id": "4324",
-                  "event_description": "Campeonato de liga 15-16",
-                  "session_id": "5438943",
-                  "amount": 25.00,
-                  "discount_amount": 00.00
-                }
-              ]
-            }
-          ],
-
-          "links": [
+            "version": "1.0",
+            "href": "http://www.oneboxtm.com/api-crm/v1.0/",
+            "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
+            "request_date": "2015-08-05T08:40:51.620Z",
+            "channel_id": "int_channel@oneboxtm.com",
+            "parameters":
             {
-              "name": "next_page",
-              "prompt": "Next",
-              "rel": "next",
-              "href": "purchases/page/1",
-              "render": "link"
+              "id": "",
+              "start_date": "",
+              "end_date": "",
+              "page": 1
             },
+
+            "purchases": [
             {
-              "name": "previous_page",
-              "prompt": "Bext",
-              "rel": "back",
-              "href": "purchses/page/1",
-              "render": "link"
-            }
-          ]
+                "order":
+                {
+                  "id": "XCGDEDFEdZ5",
+                  "buyer_id": "joan@gmail.com",
+                  "amount": 535.43,
+                  "products_number": 3,
+                  "status": "OK",
+                  "delivery_method": "EMAIL",
+                  "order_date": "2015-08-05T08:40:51.620Z",
+                  "discount_amount": 23.00,
+                  "update_date": "2015-08-05T08:40:51.620Z"
+                },
+                "channel":
+                {
+                  "channel_id": "int_channel@oneboxtm.com",
+                  "city": "BARCELONA",
+                  "state": "CATALONIA",
+                  "region": "",
+                  "country": "SPAIN",
+                  "zipCode": "08003"
+                },
+                "products": [
+                  {
+                    "id": "439832",
+                    "sku": "LATERAL 1",
+                    "description": "Tribuna lateral 1a",
+                    "taxonomy": "43123",
+                    "taxonomy_description": "DEPFUT",
+                    "event_id": "4324",
+                    "event_description": "Campeonato de liga 15-16",
+                    "session_id": "5438943",
+                    "amount": 125.45,
+                    "discount_amount": 00.00
+                  },
+                  {
+                    "id": "439831",
+                    "sku": "LATERAL 1",
+                    "description": "Tribuna lateral 1a",
+                    "taxonomy": "43123",
+                    "taxonomy_description": "DEPFUT",
+                    "event_id": "4324",
+                    "event_description": "Campeonato de liga 15-16",
+                    "session_id": "5438943",
+                    "amount": 225.45,
+                    "discount_amount": 23.00
+                  },
+                  {
+                    "id": "439833",
+                    "sku": "GOL NORD",
+                    "description": "Tribuna de gol nord.",
+                    "taxonomy": "43123",
+                    "taxonomy_description": "DEPFUT",
+                    "event_id": "4324",
+                    "event_description": "Campeonato de liga 15-16",
+                    "session_id": "5438943",
+                    "amount": 25.00,
+                    "discount_amount": 00.00
+                  }
+                ]
+              }
+            ],
+
+            "links": [
+              {
+                "name": "next_page",
+                "prompt": "Next",
+                "rel": "next",
+                "href": "purchases/page/1",
+                "render": "link"
+              },
+              {
+                "name": "previous_page",
+                "prompt": "Bext",
+                "rel": "back",
+                "href": "purchses/page/1",
+                "render": "link"
+              }
+            ]
+          }
         }
-    }
 
 + Response 204 (application/json)
 
 + Response 400 (application/json)
 
-      {
-        "error": "Bad request",
-        "error_description": "There was a syntax error, check your params request and try it again."
-      }
+        {
+          "error": "Bad request",
+          "error_description": "There was a syntax error, check your params request and try it again."
+        }
 
 + Response 401 (application/json)
 
-      {
+        {
               "error": "unauthorized",
               "error_description": "Full authentication is required to access this resource"
-      }
+        }
