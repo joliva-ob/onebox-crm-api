@@ -13,6 +13,32 @@ To do so, we have used a **API Blueprint** standard, **apiary** as an online edi
 + [github](https://github.com/joliva-ob/onebox-crm-api)
 + [onebox-developer](http://developer.oneboxtickets.com/crm-api/)
 
+## OAuth Requests [/oauth/token]
+
+### Request Access Token [POST]
+
+You will need to use OAuth to access the API.  Write to us at api-support@oneboxtm.com.  We will give you a client ID and client secret. Use this as shown in the following call in order to retrieve a token.
+Once you have a token you can use it in all API calls as shown below.
+
++ Request (application/json)
+
+        {
+            "grant_type": "password",
+            "client_id": [CLIENT_ID],
+            "client_secret": [CLIENT_SECRET],
+            "password": [YOURPASSWORD],
+            "username": [YOURUSERNAME]
+        }
+
++ Response 201
+
+        {
+            "access_token": "[OAUTH2_TOKEN]",
+            "token_type":"bearer",
+            "expires_in":7200,
+            "refresh_token": "[REFRESH_TOKEN]"
+        }
+
 ## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page}]
 List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
