@@ -61,10 +61,11 @@ Once you have a token you can use it in all API calls as shown below.</p>
 </tr>
 </tbody>
 </table>
-<div id="buyers-collection-get" class="action get"><h4 class="action-heading"><div class="name">List All Buyers</div><a href="#buyers-collection-get" class="method get">GET</a><code class="uri">/crm-api/v1.0/buyers{?id,start_date,end_date,page}</code></h4><div class="title"><strong>Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by a given buyer identified by its email</p>
+<div id="buyers-collection-get" class="action get"><h4 class="action-heading"><div class="name">List All Buyers</div><a href="#buyers-collection-get" class="method get">GET</a><code class="uri">/crm-api/v1.0/buyers{?id,start_date,end_date,page,page_size}</code></h4><div class="title"><strong>Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by a given buyer identified by its email</p>
 </dd><dt>start_date</dt><dd><code>date</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by starting date (<code>2015-08-05T08:40:51.620Z</code>)</p>
 </dd><dt>end_date</dt><dd><code>date</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by final date</p>
 </dd><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p>Paginate response to the given page number</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p>Size of the each page requested.</p>
 </dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer OAUTH2_TOKEN</span><br><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">collection</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"1.0"</span></span>,
@@ -76,12 +77,12 @@ Once you have a token you can use it in all API calls as shown below.</p>
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
       "<span class="hljs-attribute">start_date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
       "<span class="hljs-attribute">end_date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-      "<span class="hljs-attribute">page</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+      "<span class="hljs-attribute">page</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span>
     </span>}</span>,
     "<span class="hljs-attribute">buyers</span>": <span class="hljs-value">[
       {
         "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"joan@email.com"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"joan@gmail.com"</span></span>,
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"first name"</span></span>,
         "<span class="hljs-attribute">surname</span>": <span class="hljs-value"><span class="hljs-string">"last name"</span></span>,
         "<span class="hljs-attribute">birth_date</span>": <span class="hljs-value"><span class="hljs-string">"1980-05-02"</span></span>,
@@ -104,7 +105,6 @@ Once you have a token you can use it in all API calls as shown below.</p>
       </span>},
       {
         "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"eva@email.com"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"eva@gmail.com"</span></span>,
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"first name"</span></span>,
         "<span class="hljs-attribute">surname</span>": <span class="hljs-value"><span class="hljs-string">"last name"</span></span>,
         "<span class="hljs-attribute">birth_date</span>": <span class="hljs-value"><span class="hljs-string">"1984-12-11"</span></span>,
@@ -131,14 +131,14 @@ Once you have a token you can use it in all API calls as shown below.</p>
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"next_page"</span></span>,
         "<span class="hljs-attribute">prompt</span>": <span class="hljs-value"><span class="hljs-string">"Next"</span></span>,
         "<span class="hljs-attribute">rel</span>": <span class="hljs-value"><span class="hljs-string">"next"</span></span>,
-        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"buyers/page/3"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"buyers?page=3"</span></span>,
         "<span class="hljs-attribute">render</span>": <span class="hljs-value"><span class="hljs-string">"link"</span>
       </span>},
       {
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"previous_page"</span></span>,
         "<span class="hljs-attribute">prompt</span>": <span class="hljs-value"><span class="hljs-string">"Bext"</span></span>,
         "<span class="hljs-attribute">rel</span>": <span class="hljs-value"><span class="hljs-string">"back"</span></span>,
-        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"buyers/page/1"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"buyers?page=1"</span></span>,
         "<span class="hljs-attribute">render</span>": <span class="hljs-value"><span class="hljs-string">"link"</span>
       </span>}
     ]
@@ -188,10 +188,12 @@ Once you have a token you can use it in all API calls as shown below.</p>
 </tr>
 </tbody>
 </table>
-<div id="purchases-collection-get" class="action get"><h4 class="action-heading"><div class="name">List All Purchases</div><a href="#purchases-collection-get" class="method get">GET</a><code class="uri">/crm-api/v1.0/purchases{?id,start_date,end_date,page,status}</code></h4><div class="title"><strong>Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by a given purchase identified by its Onebox order code</p>
+<div id="purchases-collection-get" class="action get"><h4 class="action-heading"><div class="name">List All Purchases</div><a href="#purchases-collection-get" class="method get">GET</a><code class="uri">/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,page,page_size,status}</code></h4><div class="title"><strong>Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by a given purchase identified by its Onebox order code</p>
+</dd><dt>buyer_id</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by a given buyer identified by its Onebox user email.</p>
 </dd><dt>start_date</dt><dd><code>date</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by starting date (<code>2015-08-05T08:40:51.620Z</code>)</p>
 </dd><dt>end_date</dt><dd><code>date</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by final date</p>
 </dd><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p>Paginate response to the given page number</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p>Size of the each page requested.</p>
 </dd><dt>status</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>Filter by order status, the available choices are:</p>
 <p class="choices"><strong>Choices:&nbsp;</strong><code>ABANDONED</code> <code>OK</code> <code>ERROR</code> </p></dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer OAUTH2_TOKEN</span><br><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">collection</span>":
@@ -204,9 +206,12 @@ Once you have a token you can use it in all API calls as shown below.</p>
     "<span class="hljs-attribute">parameters</span>":
     <span class="hljs-value">{
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">buyer_id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
       "<span class="hljs-attribute">start_date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
       "<span class="hljs-attribute">end_date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-      "<span class="hljs-attribute">page</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+      "<span class="hljs-attribute">page</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">""</span>
     </span>}</span>,
 
     "<span class="hljs-attribute">purchases</span>": <span class="hljs-value">[
@@ -218,19 +223,11 @@ Once you have a token you can use it in all API calls as shown below.</p>
           "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-number">535.43</span></span>,
           "<span class="hljs-attribute">products_number</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
           "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"OK"</span></span>,
+          "<span class="hljs-attribute">channel</span>": <span class="hljs-value"><span class="hljs-string">"int_channel@oneboxtm.com"</span></span>,
           "<span class="hljs-attribute">delivery_method</span>": <span class="hljs-value"><span class="hljs-string">"EMAIL"</span></span>,
           "<span class="hljs-attribute">order_date</span>": <span class="hljs-value"><span class="hljs-string">"2015-08-05T08:40:51.620Z"</span></span>,
           "<span class="hljs-attribute">discount_amount</span>": <span class="hljs-value"><span class="hljs-number">23.00</span></span>,
           "<span class="hljs-attribute">update_date</span>": <span class="hljs-value"><span class="hljs-string">"2015-08-05T08:40:51.620Z"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">channel</span>":
-        <span class="hljs-value">{
-          "<span class="hljs-attribute">channel_id</span>": <span class="hljs-value"><span class="hljs-string">"int_channel@oneboxtm.com"</span></span>,
-          "<span class="hljs-attribute">city</span>": <span class="hljs-value"><span class="hljs-string">"BARCELONA"</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"CATALONIA"</span></span>,
-          "<span class="hljs-attribute">region</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-          "<span class="hljs-attribute">country</span>": <span class="hljs-value"><span class="hljs-string">"SPAIN"</span></span>,
-          "<span class="hljs-attribute">zipCode</span>": <span class="hljs-value"><span class="hljs-string">"08003"</span>
         </span>}</span>,
         "<span class="hljs-attribute">products</span>": <span class="hljs-value">[
           {
@@ -278,14 +275,14 @@ Once you have a token you can use it in all API calls as shown below.</p>
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"next_page"</span></span>,
         "<span class="hljs-attribute">prompt</span>": <span class="hljs-value"><span class="hljs-string">"Next"</span></span>,
         "<span class="hljs-attribute">rel</span>": <span class="hljs-value"><span class="hljs-string">"next"</span></span>,
-        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"purchases/page/1"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"purchases?page=1"</span></span>,
         "<span class="hljs-attribute">render</span>": <span class="hljs-value"><span class="hljs-string">"link"</span>
       </span>},
       {
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"previous_page"</span></span>,
         "<span class="hljs-attribute">prompt</span>": <span class="hljs-value"><span class="hljs-string">"Bext"</span></span>,
         "<span class="hljs-attribute">rel</span>": <span class="hljs-value"><span class="hljs-string">"back"</span></span>,
-        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"purchses/page/1"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"purchses?page=1"</span></span>,
         "<span class="hljs-attribute">render</span>": <span class="hljs-value"><span class="hljs-string">"link"</span>
       </span>}
     ]
@@ -296,7 +293,7 @@ Once you have a token you can use it in all API calls as shown below.</p>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">error</span>": <span class="hljs-value"><span class="hljs-string">"unauthorized"</span></span>,
   "<span class="hljs-attribute">error_description</span>": <span class="hljs-value"><span class="hljs-string">"Full authentication is required to access this resource"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 05 Nov 2015</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 11 Nov 2015</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
