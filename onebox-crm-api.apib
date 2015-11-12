@@ -39,6 +39,20 @@ Once you have a token you can use it in all API calls as shown below.
             "refresh_token": "[REFRESH_TOKEN]"
         }
 
++ Response 400 (application/json)
+
+        {
+          "error": "Bad request",
+          "error_description": "There was a syntax error, check your params request and try it again."
+        }
+
++ Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "error_description": "Full authentication is required to access this resource"
+        }
+
 ## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page,page_size}]
 List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
@@ -153,7 +167,7 @@ See below the description of the response fields we consider that need to be exp
           }
         }
 
-+ Response 201 (application/json)
++ Response 204 (application/json)
 
 + Response 400 (application/json)
 
