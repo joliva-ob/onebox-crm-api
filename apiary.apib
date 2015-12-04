@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://developer.oneboxtickets.com/crm-api/index.html
+HOST: http://onebox-api-url/1.0/crm-api
 
 # onebox-crm-api
 
@@ -20,7 +20,7 @@ To do so, we have used a **API Blueprint** standard, **apiary** as an online edi
 You will need to use OAuth to access the API.  Write to us at api-support@oneboxtm.com.  We will give you a client ID and client secret. Use this as shown in the following call in order to retrieve a token.
 Once you have a token you can use it in all API calls as shown below.
 
-+ Request (application/json)
++ Request  (application/json)
 
         {
             "grant_type": "password",
@@ -30,7 +30,7 @@ Once you have a token you can use it in all API calls as shown below.
             "username": [YOURUSERNAME]
         }
 
-+ Response 201
++ Response 201 (application/json)
 
         {
             "access_token": "[OAUTH2_TOKEN]",
