@@ -6,7 +6,7 @@
  * Parameters (named path params accessible on req.params and query params on req.query):
  *
  * id(type: text) - Filter by a given buyer identified by its email
- * start_date(type: date) - Filter by starting date (`2015-08-05T08:40:51.620Z`)
+ * start_date(type: date) - Filter by starting date (`2015-08-05T08:40:51Z`)
  * end_date(type: date) - Filter by final date
  * page(type: number) - Paginate response to the given page number
  * page_size(type: number) - Size of the each page requested.
@@ -26,7 +26,7 @@ exports.getCrm_apiV1_0Buyers = function(req, res) {
  *
  * id(type: text) - Filter by a given purchase identified by its Onebox order code
  * buyer_id(type: text) - Filter by a given buyer identified by its Onebox user email.
- * start_date(type: date) - Filter by starting date (`2015-08-05T08:40:51.620Z`)
+ * start_date(type: date) - Filter by starting date (`2015-08-05T08:40:51Z`)
  * end_date(type: date) - Filter by final date
  * page(type: number) - Paginate response to the given page number
  * page_size(type: number) - Size of the each page requested.
