@@ -7,6 +7,7 @@
  *
  */
 exports.postOauthToken = function(req, res) {
+	res.set('Content-Type', 'application/json');
 	res.status(201);
 
 	// set response body and send

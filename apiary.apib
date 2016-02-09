@@ -53,7 +53,7 @@ Once you have a token you can use it in all API calls as shown below.
           "error_description": "Full authentication is required to access this resource"
         }
 
-## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,page,page_size}]
+## Buyers Collection [/crm-api/v1.0/buyers{?id,start_date,end_date,event_id,session_id,channel_name,page,page_size}]
 List all the key data from the clients which have performed at least one purchase. It is also allowed filtering between dates and paging.
 
 See below the description of the response fields we consider that need to be explained:
@@ -78,6 +78,9 @@ See below the description of the response fields we consider that need to be exp
     + id (optional, text) ... Filter by a given buyer identified by its email
     + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51Z`)
     + end_date (optional, date) ... Filter by final date
+    + event_id (optional, text) ... Filter by a given event.
+    + session_id (optional, text) ... Filter by a given session.
+    + channel_name (optional, text) ... Filter by onsale channel name.
     + page (optional, number) ... Paginate response to the given page number
     + page_size (optional, number) ... Size of the each page requested.
 
@@ -96,6 +99,9 @@ See below the description of the response fields we consider that need to be exp
               "id": "",
               "start_date": "",
               "end_date": "",
+              "event_id": "",
+              "session_id": "",
+              "channel_name": "",
               "page": 2,
               "page_size": 10
             },
@@ -183,7 +189,7 @@ See below the description of the response fields we consider that need to be exp
           "error_description": "Full authentication is required to access this resource"
         }
 
-## Purchases Collection [/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,page,page_size,status}]
+## Purchases Collection [/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,event_id,session_id,channel_name,page,page_size,status}]
 List all the key data from the purchases including its products, the order details they came from, the orderline and its channel on sale. Finally it is also allowed filtering between dates and paging.
 
 | Response Field                   | Description                                   |
@@ -210,6 +216,9 @@ List all the key data from the purchases including its products, the order detai
     + buyer_id (optional, text) ... Filter by a given buyer identified by its Onebox user email.
     + start_date (optional, date) ... Filter by starting date (`2015-08-05T08:40:51Z`)
     + end_date (optional, date) ... Filter by final date
+    + event_id (optional, text) ... Filter by a given event.
+    + session_id (optional, text) ... Filter by a given session.
+    + channel_name (optional, text) ... Filter by onsell channel name.
     + page (optional, number) ... Paginate response to the given page number
     + page_size (optional, number) ... Size of the each page requested.
     + status (optional, enum[string])
@@ -238,6 +247,9 @@ List all the key data from the purchases including its products, the order detai
               "buyer_id": "",
               "start_date": "",
               "end_date": "",
+              "event_id": "",
+              "session_id": "",
+              "channel_name": "",
               "page": 1,
               "page_size": 10,
               "status": ""
@@ -265,9 +277,9 @@ List all the key data from the purchases including its products, the order detai
                     "description": "Tribuna lateral 1a",
                     "taxonomy": "43123",
                     "taxonomy_description": "DEPFUT",
-                    "event_id": "4324",
+                    "event": "4324",
                     "event_description": "Campeonato de liga 15-16",
-                    "session_id": "5438943",
+                    "session": "5438943",
                     "amount": 125.45,
                     "discount_amount": 00.00
                   },
@@ -277,9 +289,9 @@ List all the key data from the purchases including its products, the order detai
                     "description": "Tribuna lateral 1a",
                     "taxonomy": "43123",
                     "taxonomy_description": "DEPFUT",
-                    "event_id": "4324",
+                    "event": "4324",
                     "event_description": "Campeonato de liga 15-16",
-                    "session_id": "5438943",
+                    "session": "5438943",
                     "amount": 225.45,
                     "discount_amount": 23.00
                   },
@@ -289,9 +301,9 @@ List all the key data from the purchases including its products, the order detai
                     "description": "Tribuna de gol nord.",
                     "taxonomy": "43123",
                     "taxonomy_description": "DEPFUT",
-                    "event_id": "4324",
+                    "event": "4324",
                     "event_description": "Campeonato de liga 15-16",
-                    "session_id": "5438943",
+                    "session": "5438943",
                     "amount": 25.00,
                     "discount_amount": 00.00
                   }
