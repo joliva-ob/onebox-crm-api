@@ -192,15 +192,15 @@ See below the description of the response fields we consider that need to be exp
 ## Purchases Collection [/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,event_id,session_id,channel_name,page,page_size,status}]
 List all the key data from the purchases including its products, the order details they came from, the orderline and its channel on sale. Finally it is also allowed filtering between dates and paging.
 
-| Response Field                   | Description                                   |
-|----------------------------------|-----------------------------------------------|
-| version                          | (Text) Version of the API                     |
-| href                             | (Text) Url of the API doc                     |
-| trace_id                         | (Text) unique identifier of the request       |
-| parameters                       | (Object) Request filtering used               |
-| purchases.order.status           | (enum) OK, ERROR, ABANDONED                   |
-| purchases.order.delivery_method  | (enum) EMAIL, BOXOFFICE, PASSBOOK             |
-| purchases.order.products_number  | (Number) Number of tickets from a given order |
+| Response Field                   | Description                                        |
+|----------------------------------|----------------------------------------------------|
+| version                          | (Text) Version of the API                          |
+| href                             | (Text) Url of the API doc                          |
+| trace_id                         | (Text) unique identifier of the request            |
+| parameters                       | (Object) Request filtering used                    |
+| purchases.order.status           | (enum) OK, ERROR, ABANDONED                        |
+| purchases.order.delivery_method  | (enum) EMAIL, TICKET, BOXOFFICE, EXTERNAL, PASSBOOK|
+| purchases.order.products_number  | (Number) Number of tickets from a given order      |
 
 ### List All Purchases [GET]
 
