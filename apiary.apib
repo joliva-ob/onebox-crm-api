@@ -94,6 +94,7 @@ See below the description of the response fields we consider that need to be exp
             "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
             "request_date": "2015-08-05T08:40:51Z",
             "channel_id": "int_channel@oneboxtm.com",
+            "hits": 2,
             "parameters":
             {
               "id": "",
@@ -127,6 +128,7 @@ See below the description of the response fields we consider that need to be exp
                 "sms_agreement": false,
                 "phone_agreement": false,
                 "post_agreement": true,
+                "passbook_generated": false,
                 "update_date": "2015-08-05T08:40:51Z"
               },
               {
@@ -149,6 +151,7 @@ See below the description of the response fields we consider that need to be exp
                 "sms_agreement": false,
                 "phone_agreement": false,
                 "post_agreement": true,
+                "passbook_generated": false,
                 "update_date": "2015-08-05T08:40:51Z"
               }
             ],
@@ -189,7 +192,7 @@ See below the description of the response fields we consider that need to be exp
           "error_description": "Full authentication is required to access this resource"
         }
 
-## Purchases Collection [/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,event_id,session_id,channel_name,page,page_size,status}]
+## Purchases Collection [/crm-api/v1.0/purchases{?id,buyer_id,start_date,end_date,event_id,session_id,channel_name,page,page_size,status,passbook}]
 List all the key data from the purchases including its products, the order details they came from, the orderline and its channel on sale. Finally it is also allowed filtering between dates and paging.
 
 | Response Field                   | Description                                        |
@@ -222,6 +225,7 @@ List all the key data from the purchases including its products, the order detai
     + page (optional, number) ... Paginate response to the given page number
     + page_size (optional, number) ... Size of the each page requested.
     + status (optional, enum[string])
+    + passbook (optional, bool) ... Filter whether passbook has been generated or not.
 
         Filter by order status, the available choices are:
 
@@ -241,6 +245,7 @@ List all the key data from the purchases including its products, the order detai
             "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
             "request_date": "2015-08-05T08:40:51Z",
             "channel_id": "int_channel@oneboxtm.com",
+            "hits": 2,
             "parameters":
             {
               "id": "",
@@ -252,7 +257,8 @@ List all the key data from the purchases including its products, the order detai
               "channel_name": "",
               "page": 1,
               "page_size": 10,
-              "status": ""
+              "status": "",
+              "passbook":
             },
 
             "purchases": [
@@ -261,12 +267,14 @@ List all the key data from the purchases including its products, the order detai
                 {
                   "id": "XCGDEDFEdZ5",
                   "buyer_id": "joan@gmail.com",
+                  "language": "es_ES",
                   "amount": 535.43,
                   "products_number": 3,
                   "status": "OK",
                   "channel": "int_channel@oneboxtm.com",
                   "delivery_method": "EMAIL",
                   "order_date": "2015-08-05T08:40:51Z",
+                  "passbook_generated": false,
                   "discount_amount": 23.00,
                   "update_date": "2015-08-05T08:40:51Z"
                 },
