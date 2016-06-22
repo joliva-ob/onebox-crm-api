@@ -201,7 +201,7 @@ List all the key data from the purchases including its products, the order detai
 | href                             | (Text) Url of the API doc                          |
 | trace_id                         | (Text) unique identifier of the request            |
 | parameters                       | (Object) Request filtering used                    |
-| purchases.order.status           | (enum) OK, ERROR, ABANDONED                        |
+| purchases.order.status           | (enum) OK, ERROR, ABANDONED, REFUND, CANCELLED     |
 | purchases.order.delivery_method  | (enum) EMAIL, TICKET, BOXOFFICE, EXTERNAL, PASSBOOK|
 | purchases.order.products_number  | (Number) Number of tickets from a given order      |
 
@@ -233,6 +233,8 @@ List all the key data from the purchases including its products, the order detai
             + `ABANDONED` - Indicates that the shopping cart and its linked order has not been confirmed yet.
             + `OK` - Orders successfully confirmed (purchase).
             + `ERROR` - Orders which have not finalized properly.
+            + `REFUND` - Orders with money amount refunded back successfully.
+            + `CANCELLED` - Orders cancelled.
 
 
 + Response 200 (application/json)

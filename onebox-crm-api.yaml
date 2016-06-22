@@ -1,0 +1,367 @@
+{
+  "basePath": "/1.0/crm-api",
+  "definitions": {
+    "Buyers Collection": {},
+    "OAuth2 Requests": {},
+    "Purchases Collection": {}
+  },
+  "host": "onebox-api-url",
+  "info": {
+    "description": "API to share CRM data to our integrated clients.\n\nTo do so, we have used a **API Blueprint** standard, **apiary** as an online editing and mocking tool, **aglio** to document it and **getsandbox** as a sandbox provider:\n\n+ [API Blueprint](https://apiblueprint.org/)\n\n+ [apiary.io](http://docs.oneboxcrmapi.apiary.io/)\n\n+ [getsandbox.com](http://onebox-crm-api.getsandbox.com/)\n\n+ [aglio](https://github.com/danielgtaylor/aglio)\n\n+ [github](https://github.com/joliva-ob/onebox-crm-api)\n\n+ [onebox-developer](http://developer.oneboxtickets.com/crm-api/)\n\n",
+    "title": "onebox-crm-api",
+    "version": ""
+  },
+  "paths": {
+    "/crm-api/v1.0/buyers": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "Filter by a given buyer identified by its email",
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by starting date (`2015-08-05T08:40:51Z`)",
+            "in": "query",
+            "name": "start_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by final date",
+            "in": "query",
+            "name": "end_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by a given event.",
+            "in": "query",
+            "name": "event_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by a given session.",
+            "in": "query",
+            "name": "session_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by onsale channel name.",
+            "in": "query",
+            "name": "channel_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Paginate response to the given page number",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "description": "Size of the each page requested.",
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "application/json": {
+                "collection": {
+                  "buyers": [
+                    {
+                      "address1": "first line address",
+                      "address2": "second line address",
+                      "birth_date": "1980-05-02",
+                      "city": "Pineda de Mar",
+                      "country": "ES",
+                      "gender": "male",
+                      "id": "joan@email.com",
+                      "language": "es_ES",
+                      "mobile": "+34 555 555 555",
+                      "name": "first name",
+                      "newsletter_agreement": true,
+                      "passbook_generated": false,
+                      "phone": "+34 555 555 555",
+                      "phone_agreement": false,
+                      "post_agreement": true,
+                      "signup_date": "2015-08-05T08:40:51Z",
+                      "sms_agreement": false,
+                      "state": "Barcelona",
+                      "surname": "last name",
+                      "update_date": "2015-08-05T08:40:51Z",
+                      "zip_code": "08397"
+                    },
+                    {
+                      "address1": "first line address",
+                      "address2": "second line address",
+                      "birth_date": "1984-12-11",
+                      "city": "Pineda de Mar",
+                      "country": "ES",
+                      "gender": "female",
+                      "id": "eva@email.com",
+                      "language": "es_ES",
+                      "mobile": "+34 555 555 555",
+                      "name": "first name",
+                      "newsletter_agreement": true,
+                      "passbook_generated": false,
+                      "phone": "+34 555 555 555",
+                      "phone_agreement": false,
+                      "post_agreement": true,
+                      "signup_date": "2015-08-05T08:40:51Z",
+                      "sms_agreement": false,
+                      "state": "Barcelona",
+                      "surname": "last name",
+                      "update_date": "2015-08-05T08:40:51Z",
+                      "zip_code": "08397"
+                    }
+                  ],
+                  "channel_id": "int_channel@oneboxtm.com",
+                  "hits": 2,
+                  "href": "http://www.oneboxtm.com/api-crm/v1.0/",
+                  "links": [
+                    {
+                      "href": "buyers?page=3",
+                      "name": "next_page",
+                      "prompt": "Next",
+                      "rel": "next",
+                      "render": "link"
+                    },
+                    {
+                      "href": "buyers?page=1",
+                      "name": "previous_page",
+                      "prompt": "Bext",
+                      "rel": "back",
+                      "render": "link"
+                    }
+                  ],
+                  "parameters": {
+                    "channel_name": "",
+                    "end_date": "",
+                    "event_id": "",
+                    "id": "",
+                    "page": 2,
+                    "page_size": 10,
+                    "session_id": "",
+                    "start_date": ""
+                  },
+                  "request_date": "2015-08-05T08:40:51Z",
+                  "trace_id": "94abc26e-173a-4ab2-a71b-863aed20f656",
+                  "version": "1.0"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "204": {
+            "description": "No Content",
+            "examples": {},
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "application/json": {
+                "error": "Bad request",
+                "error_description": "There was a syntax error, check your params request and try it again."
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "unauthorized",
+                "error_description": "Full authentication is required to access this resource"
+              }
+            },
+            "headers": {}
+          }
+        },
+        "summary": "List All Buyers",
+        "tags": []
+      }
+    },
+    "/crm-api/v1.0/purchases": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "Filter by a given purchase identified by its Onebox order code",
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by a given buyer identified by its Onebox user email.",
+            "in": "query",
+            "name": "buyer_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by starting date (`2015-08-05T08:40:51Z`)",
+            "in": "query",
+            "name": "start_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by final date",
+            "in": "query",
+            "name": "end_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by a given event.",
+            "in": "query",
+            "name": "event_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by a given session.",
+            "in": "query",
+            "name": "session_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by onsell channel name.",
+            "in": "query",
+            "name": "channel_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Paginate response to the given page number",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "description": "Size of the each page requested.",
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Filter by order status, the available choices are:\n",
+            "enum": [
+              "ABANDONED",
+              "OK",
+              "ERROR"
+            ],
+            "in": "query",
+            "name": "passbook",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {},
+            "headers": {}
+          },
+          "204": {
+            "description": "No Content",
+            "examples": {},
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "application/json": {
+                "error": "Bad request",
+                "error_description": "There was a syntax error, check your params request and try it again."
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "unauthorized",
+                "error_description": "Full authentication is required to access this resource"
+              }
+            },
+            "headers": {}
+          }
+        },
+        "summary": "List All Purchases",
+        "tags": []
+      }
+    },
+    "/oauth/token": {
+      "post": {
+        "description": "You will need to use OAuth to access the API.  Write to us at api-support@oneboxtm.com.  We will give you a client ID and client secret. Use this as shown in the following call in order to retrieve a token.\nOnce you have a token you can use it in all API calls as shown below.\n\n",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "examples": {
+              "application/json": {
+                "access_token": "[OAUTH2_TOKEN]",
+                "expires_in": 7200,
+                "refresh_token": "[REFRESH_TOKEN]",
+                "token_type": "bearer"
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "application/json": {
+                "error": "Bad request",
+                "error_description": "There was a syntax error, check your params request and try it again."
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "unauthorized",
+                "error_description": "Full authentication is required to access this resource"
+              }
+            },
+            "headers": {}
+          }
+        },
+        "summary": "OAuth2 Request Access Token",
+        "tags": []
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0"
+}
