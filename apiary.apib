@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://onebox-api-url/
+HOST: http://onebox-api-url/1.0/crm-api
 
 # onebox-crm-api
 
@@ -201,7 +201,7 @@ List all the key data from the purchases including its products, the order detai
 | href                             | (Text) Url of the API doc                          |
 | trace_id                         | (Text) unique identifier of the request            |
 | parameters                       | (Object) Request filtering used                    |
-| purchases.order.status           | (enum) OK, ERROR, ABANDONED                        |
+| purchases.order.status           | (enum) OK, ERROR, ABANDONED, REFUND, CANCELLED     |
 | purchases.order.delivery_method  | (enum) EMAIL, TICKET, BOXOFFICE, EXTERNAL, PASSBOOK|
 | purchases.order.products_number  | (Number) Number of tickets from a given order      |
 
@@ -233,6 +233,8 @@ List all the key data from the purchases including its products, the order detai
             + `ABANDONED` - Indicates that the shopping cart and its linked order has not been confirmed yet.
             + `OK` - Orders successfully confirmed (purchase).
             + `ERROR` - Orders which have not finalized properly.
+            + `REFUND` - Orders with money amount refunded back successfully.
+            + `CANCELLED` - Orders cancelled.
 
 
 + Response 200 (application/json)
@@ -258,7 +260,7 @@ List all the key data from the purchases including its products, the order detai
               "page": 1,
               "page_size": 10,
               "status": "",
-              "passbook": ""
+              "passbook":
             },
 
             "purchases": [
@@ -289,7 +291,7 @@ List all the key data from the purchases including its products, the order detai
                     "event_description": "Campeonato de liga 15-16",
                     "session": "5438943",
                     "amount": 125.45,
-                    "discount_amount": 0,
+                    "discount_amount": 00.00,
                     "passbook_generated": false,
                     "update_date": "2015-08-05T08:40:51Z"
                   },
@@ -317,68 +319,7 @@ List all the key data from the purchases including its products, the order detai
                     "event_description": "Campeonato de liga 15-16",
                     "session": "5438943",
                     "amount": 25.00,
-                    "discount_amount": 0,
-                    "passbook_generated": false,
-                    "update_date": "2015-08-05T08:40:51Z"
-                  }
-                ]
-              },
-              {
-                "order":
-                {
-                  "id": "XCGDEDFEdZ6",
-                  "buyer_id": "joan@gmail.com",
-                  "language": "es_ES",
-                  "amount": 535.43,
-                  "products_number": 3,
-                  "status": "OK",
-                  "channel": "int_channel@oneboxtm.com",
-                  "delivery_method": "EMAIL",
-                  "order_date": "2015-08-05T08:40:51Z",
-                  "passbook_generated": false,
-                  "discount_amount": 23.00,
-                  "update_date": "2015-08-05T08:40:51Z"
-                },
-                "products": [
-                  {
-                    "id": "439833",
-                    "sku": "LATERAL 1",
-                    "description": "Tribuna lateral 1a",
-                    "taxonomy": "43123",
-                    "taxonomy_description": "DEPFUT",
-                    "event": "4324",
-                    "event_description": "Campeonato de liga 15-16",
-                    "session": "5438943",
-                    "amount": 125.45,
-                    "discount_amount": 0,
-                    "passbook_generated": false,
-                    "update_date": "2015-08-05T08:40:51Z"
-                  },
-                  {
-                    "id": "439834",
-                    "sku": "LATERAL 1",
-                    "description": "Tribuna lateral 1a",
-                    "taxonomy": "43123",
-                    "taxonomy_description": "DEPFUT",
-                    "event": "4324",
-                    "event_description": "Campeonato de liga 15-16",
-                    "session": "5438943",
-                    "amount": 225.45,
-                    "discount_amount": 23.00,
-                    "passbook_generated": false,
-                    "update_date": "2015-08-05T08:40:51Z"
-                  },
-                  {
-                    "id": "439835",
-                    "sku": "GOL NORD",
-                    "description": "Tribuna de gol nord.",
-                    "taxonomy": "43123",
-                    "taxonomy_description": "DEPFUT",
-                    "event": "4324",
-                    "event_description": "Campeonato de liga 15-16",
-                    "session": "5438943",
-                    "amount": 25.00,
-                    "discount_amount": 0,
+                    "discount_amount": 00.00,
                     "passbook_generated": false,
                     "update_date": "2015-08-05T08:40:51Z"
                   }
