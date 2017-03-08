@@ -35,8 +35,11 @@ Once you have a token you can use it in all API calls as shown below.
         {
             "access_token": "[OAUTH2_TOKEN]",
             "token_type":"bearer",
-            "expires_in":7200,
-            "refresh_token": "[REFRESH_TOKEN]"
+            "refresh_token": "[OAUTH2_TOKEN]",
+            "expires_in": 43200,
+            "scope": "api-adm-all",
+            "authInfo": "xv193mp/riIhmrgUvzJvVhts1UzjrK/ztPBrEERdtko=",
+            "jti": "65a18932-02b4-43fa-99cd-c97d5d2fd2a2"
         }
 
 + Response 400 (application/json)
